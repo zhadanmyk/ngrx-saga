@@ -11,7 +11,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { UsersService } from './services/users.service';
 import { PostsService } from './services/posts.service';
-import { SagaService } from './services/saga.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,16 +21,16 @@ import { SagaService } from './services/saga.service';
       metaReducers,
       runtimeChecks: {
         strictStateImmutability: true,
-        strictActionImmutability: true
-      }
+        strictActionImmutability: true,
+      },
     }),
     EffectsModule.forRoot([AppEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production
-    })
+      logOnly: environment.production,
+    }),
   ],
-  providers: [UsersService, PostsService, SagaService],
-  bootstrap: [AppComponent]
+  providers: [UsersService, PostsService],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
